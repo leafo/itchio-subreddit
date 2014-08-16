@@ -1,0 +1,238 @@
+
+$border_color: #dadada;
+$button_color: #FA5C5C;
+$link_color: #DD4A4A;
+$buy_color: #24C091;
+
+@mixin unselectable {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+@mixin border_box {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+@mixin transition($args...) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    transition: $args;
+}
+
+
+@mixin button($height: 35px) {
+    @include unselectable;
+    @include border_box;
+    display: inline-block;
+
+    background: $button_color;
+    color: white;
+    text-decoration: none;
+    padding: 0 10px;
+    font-size: 16px;
+    text-shadow: 1px 1px 2px darken($button_color, 30%);
+    letter-spacing: 0.015em;
+
+    border-radius: 1px;
+    cursor: pointer;
+    border: 0;
+    text-align: center;
+
+    line-height: $height;
+    height: $height;
+
+    &:hover {
+        background: lighten($button_color, 2%);
+    }
+
+    &:active {
+        background-color: darken(desaturate($button_color, 20%), 8%);
+    }
+}
+
+
+#header-img.default-header {
+    display: none;
+}
+
+#header {
+    background: #1D1812;
+    border-bottom: 0;
+
+    .tabmenu {
+        margin: 0;
+        margin-bottom: 5px;
+
+        li {
+            display: inline-block;
+        }
+
+        li a {
+            display: block;
+            background: rgba(255,255,255, 0.3);
+            color: white;
+            border: 0;
+            border-radius: 2px;
+            padding: 2px 4px;
+
+            &:hover {
+                background: rgba(255,255,255, 0.4);
+            }
+        }
+
+        .selected a {
+            background: $button_color;
+
+            &:hover {
+                background: $button_color;
+            }
+
+        }
+    }
+
+    #header-bottom-right {
+        background: whitesmoke;
+        font-size: 12px;
+        padding: 8px 10px;
+
+        a {
+            color: $link_color;
+        }
+    }
+
+    #sr-header-area {
+        opacity: 0.5;
+        @include transition(opacity 0.2s ease);
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}
+
+.side {
+    margin: 0;
+    margin-top: 15px;
+    background: mix(white, $border_color, 85%);
+    border: 2px solid $border_color;
+    border-right: 0;
+    padding: 10px;
+
+    .nub {
+        display: none;
+    }
+
+    .morelink {
+        border: 0;
+        color: white;
+        background-image: none;
+        @include button;
+        display: block;
+
+        a {
+            color: white;
+            font-weight: normal;
+        }
+    }
+}
+
+.pagename {
+    a {
+        display: inline-block;
+        background-image: url("logo.png");
+        width: 222px;
+        height: 66px;
+        color: transparent;
+    }
+}
+
+#siteTable {
+    .thing {
+        margin-top: 15px;
+        margin-bottom: 0;
+        margin-left: 10px;
+        border: 2px solid $border_color;
+        margin-right: 330px;
+        padding: 10px 0;
+        border-radius: 2px;
+        background: white;
+
+        .rank, .midcol, .entry, .thumbnail {
+            padding: 0;
+            margin: 0;
+            margin-right: 10px;
+        }
+
+        .rank {
+            @include border_box;
+            padding-right: 10px;
+
+            color: #666;
+            font-weight: bold;
+            font-size: 16px;
+            width: 40px;
+            border-right: 1px solid $border_color;
+            margin-top: 24px;
+        }
+
+        .midcol {
+            margin-top: 10px;
+        }
+
+        .tagline {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        p.title {
+            margin-top: 2px;
+        }
+
+
+        a.title {
+            color: $link_color;
+            font-size: 18px;
+        }
+
+        a.author {
+            color: #999;
+            text-decoration: underline;
+        }
+
+        .linkflairlabel {
+            border: 0;
+            background: $link_color;
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+            border-radius: 0;
+            padding: 2px 10px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+}
+
+.nav-buttons {
+    margin: 20px;
+    a {
+        @include transition(all 0.2s ease);
+        background: white;
+        color: $link_color;
+        font-weight: normal;
+        font-size: 14px;
+        padding: 6px 10px;
+
+        &:hover {
+            background: $button_color;
+            border: 1px solid $button_color;
+            color: white;
+        }
+    }
+}
+
+body {
+    background: whitesmoke !important;
+}
